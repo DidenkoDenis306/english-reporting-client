@@ -38,7 +38,7 @@ export const StudentForm = () => {
   const onSubmit = form.onSubmit((values) => {
     setLoading(true);
     axios
-      .post('http://localhost:7654/students', { ...values, teacherId: 1 })
+      .post(`${process.env.NEXT_PUBLIC_API_URL}/students`, { ...values, teacherId: 1 })
       .then((response) => {
         addStudent(response.data);
         form.reset();

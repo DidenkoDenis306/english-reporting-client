@@ -56,4 +56,4 @@ class HttpClient {
   }
 }
 
-export const http = new HttpClient(axios, 'http://localhost:7654');
+export const http = new HttpClient(axios, process.env.NEXT_PUBLIC_API_URL);

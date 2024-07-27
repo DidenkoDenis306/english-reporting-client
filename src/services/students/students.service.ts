@@ -9,7 +9,7 @@ class StudentsService {
 
   public async getStudent(
     id: number,
-    filter: string | null,
+    filter?: string | null,
   ): Promise<AxiosResponse<IStudentResponse>> {
     return await http.get<AxiosResponse<IStudentResponse>>(
       `/students/${id}?filter=${filter || ''}`,

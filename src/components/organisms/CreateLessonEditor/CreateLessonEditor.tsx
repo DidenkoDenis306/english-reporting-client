@@ -48,7 +48,7 @@ export const CreateLessonEditor: FC<Props> = ({ student, lessonDate }) => {
   });
 
   const openai = new OpenAI({
-    apiKey: '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',
+    apiKey: process.env.NEXT_PUBLIC_OPEN_AI_API_KEY,
     dangerouslyAllowBrowser: true,
   });
 
