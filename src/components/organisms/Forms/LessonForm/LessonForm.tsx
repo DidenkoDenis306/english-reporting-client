@@ -9,11 +9,13 @@ import { lessonsService, studentsService } from '@repo/services';
 import { CreateLessonEditor } from '@repo/src/components/organisms';
 import { useEditorStore } from '@repo/store';
 import { generateRandomWord } from '@repo/utils';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { useState } from 'react';
+import {QueryClient, useMutation, useQuery, useQueryClient} from '@tanstack/react-query';
+import {useEffect, useState} from 'react';
 
 export const LessonForm = () => {
   const { editorContent } = useEditorStore();
+
+
 
   const form = useForm({
     initialValues: {
@@ -38,6 +40,12 @@ export const LessonForm = () => {
     queryFn: () => studentsService.getStudent(Number(form.values.student)),
   });
 
+  const [studentForEditor, setStudentForEditor] = useState(student?.data)
+
+  useEffect(() => {
+    setStudentForEditor(student?.data)
+  }, [student]);
+
   const { mutate: createLesson, isPending: isPendingCreateLesson } =
     useMutation({
       mutationFn: lessonsService.createLesson,
@@ -48,6 +56,9 @@ export const LessonForm = () => {
           message: '',
           withBorder: true,
         });
+
+        setStudentForEditor({...studentForEditor!, lessonsCount: studentForEditor?.lessonsCount! + 1 })
+
       },
       onError: () => {
         notifications.show({
@@ -59,6 +70,8 @@ export const LessonForm = () => {
       },
     });
 
+
+
   const onSubmit = form.onSubmit((values) => {
     createLesson({
       ...values,
@@ -67,7 +80,8 @@ export const LessonForm = () => {
       lessonContent: editorContent,
     });
 
-    form.reset();
+
+    // form.reset();
   });
 
   return (
@@ -102,7 +116,7 @@ export const LessonForm = () => {
           />
 
           <CreateLessonEditor
-            student={student?.data}
+            student={studentForEditor}
             lessonDate={form.values.lessonDate}
           />
 
