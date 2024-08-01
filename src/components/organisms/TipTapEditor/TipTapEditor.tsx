@@ -9,14 +9,14 @@ import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 import { saveAs } from 'file-saver';
-import React, { FC } from 'react';
+import React, {FC, forwardRef, useImperativeHandle, useRef} from 'react';
 
 interface Props {
   student: IStudent;
   lesson: any;
 }
 
-export const TipTapEditor: FC<Props> = ({ student, lesson }) => {
+export const TipTapEditor: FC<Props> = forwardRef(({ student, lesson }, ref) => {
   const documentName = `${student.firstName} ${student?.lastName}, ${getOrdinalSuffix(lesson.lessonNumber)} lesson, ${formatDate(lesson.lessonDate)}`;
 
   const editor = useEditor({
@@ -30,6 +30,7 @@ export const TipTapEditor: FC<Props> = ({ student, lesson }) => {
     `,
   });
 
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
   const exportToDocx = async () => {
     if (!editor) return;
 
@@ -82,29 +83,13 @@ export const TipTapEditor: FC<Props> = ({ student, lesson }) => {
     saveAs(blob, `${documentName}.docx`);
   };
 
-  return (
-    // <Box>
-    //   <Box
-    //     style={{
-    //       border: '2px solid #339af0',
-    //       borderRadius: 5,
-    //       padding: 12,
-    //       marginBottom: 16,
-    //     }}
-    //   >
-    //     <EditorContent editor={editor} />
-    //     <style>
-    //       {`
-    //         .ProseMirror-focused {
-    //           outline: none;
-    //           box-shadow: none;
-    //         }
-    //     `}
-    //     </style>
-    //   </Box>
-    //   <Button onClick={exportToDocx}>Export to .docx</Button>
-    // </Box>
+  useImperativeHandle(ref, () => ({
+    clickButton() {
+      buttonRef.current?.click();
+    },
+  }));
 
+  return (
     <Stack gap="md">
       <RichTextEditor editor={editor}>
         <RichTextEditor.Toolbar>
@@ -155,9 +140,9 @@ export const TipTapEditor: FC<Props> = ({ student, lesson }) => {
         <RichTextEditor.Content />
       </RichTextEditor>
 
-      <Button onClick={exportToDocx} w={150}>
+      <Button ref={buttonRef} onClick={exportToDocx} w={150}>
         Export to .docx
       </Button>
     </Stack>
   );
-};
+});

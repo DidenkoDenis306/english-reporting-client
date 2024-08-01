@@ -6,13 +6,17 @@ import { IconGauge, IconUsers } from '@tabler/icons-react';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import {useCurrentUser} from "@repo/store";
 
-export const StudentsList = () => {
+export const StudentsList = ({closeSb}: {closeSb: () => void}) => {
   const { id } = useParams();
 
+  const {currentUser} = useCurrentUser();
+
   const { data: students, isLoading } = useQuery({
+    enabled: Boolean(currentUser),
     queryKey: ['students'],
-    queryFn: studentsService.getStudents,
+    queryFn: () => studentsService.getStudents(Number(currentUser?.id) || 0),
   });
 
   // const onRemoveStudent = (student: IStudent) => {
@@ -39,8 +43,9 @@ export const StudentsList = () => {
         label="Students"
         leftSection={<IconUsers size="1rem" stroke={1.5} />}
         childrenOffset={28}
+
       >
-        <ScrollArea h={250}>
+        <ScrollArea h="20vh">
           {students &&
             students.data.map((student) => (
               <NavLink
@@ -48,6 +53,7 @@ export const StudentsList = () => {
                 href={`/students/${student.id}`}
                 label={`${student.firstName} ${student.lastName}`}
                 component={Link}
+                onClick={closeSb}
               />
             ))}
         </ScrollArea>

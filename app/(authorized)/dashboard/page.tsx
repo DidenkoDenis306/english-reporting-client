@@ -4,9 +4,12 @@ import { AreaChart } from '@mantine/charts';
 import { Box, Button, Group, Stack, Text, Title } from '@mantine/core';
 import { CustomCalendar } from '@repo/src/components/moleculs';
 import { useCurrentUser } from '@repo/store';
+import {useMediaQuery} from "@mantine/hooks";
 
 export default function Page() {
   const { currentUser } = useCurrentUser();
+
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const data = [
     {
@@ -54,11 +57,11 @@ export default function Page() {
           gap={8}
           style={{ border: '1px solid #d1dbe8', padding: 24, borderRadius: 12 }}
         >
-          <Text fw={500} fz={16}>
+          <Text fw={500} fz={isMobile ? 12 : 16}>
             Total lessons
           </Text>
 
-          <Text fw={800} fz={24}>
+          <Text fw={800} fz={isMobile ? 18 : 24}>
             80
           </Text>
         </Stack>
@@ -69,11 +72,11 @@ export default function Page() {
           gap={8}
           style={{ border: '1px solid #d1dbe8', padding: 24, borderRadius: 12 }}
         >
-          <Text fw={500} fz={16}>
+          <Text fw={500} fz={isMobile ? 12 : 16}>
             Total salary
           </Text>
 
-          <Text fw={800} fz={24}>
+          <Text fw={800} fz={isMobile ? 18 : 24}>
             $1,200
           </Text>
         </Stack>
@@ -84,44 +87,78 @@ export default function Page() {
           gap={8}
           style={{ border: '1px solid #d1dbe8', padding: 24, borderRadius: 12 }}
         >
-          <Text fw={500} fz={16}>
-            This month's salary
+          <Text fw={500} fz={isMobile ? 12 : 16}>
+            Salary
           </Text>
 
-          <Text fw={800} fz={24}>
+          <Text fw={800} fz={isMobile ? 18 : 24}>
             $800
           </Text>
         </Stack>
       </Group>
 
-      <Group h={250} style={{ display: 'flex', flexDirection: 'row' }}>
-        <div style={{ flex: '0 0 auto' }}>
-          <CustomCalendar />
-        </div>
-        <div
-          style={{
-            flex: '1 1 auto',
-            height: '100%',
-            padding: '15px',
-            border: '1px solid #d1dbe8',
-            borderRadius: 12,
-          }}
-        >
-          <AreaChart
-            h="100%"
-            w="100%"
-            data={data}
-            dataKey="date"
-            series={[
-              { name: 'Apples', color: 'indigo.6' },
-              { name: 'Oranges', color: 'blue.6' },
-              { name: 'Tomatoes', color: 'teal.6' },
-            ]}
-            curveType="linear"
-          />
-        </div>
-      </Group>
+      {isMobile ? (
+          <Stack h={250} style={{ display: 'flex' }}>
+            <div style={{ flex: '0 0 auto' }}>
+              <CustomCalendar />
+            </div>
+            <div
+                style={{
+                  flex: '1 1 auto',
+                  height: '100%',
+                  padding: '15px',
+                  border: '1px solid #d1dbe8',
+                  borderRadius: 12,
+                }}
+            >
+              <Box>
+              <AreaChart
+                  h={200}
+                  w="100%"
+                  data={data}
+                  dataKey="date"
+                  series={[
+                    { name: 'Apples', color: 'indigo.6' },
+                    { name: 'Oranges', color: 'blue.6' },
+                    { name: 'Tomatoes', color: 'teal.6' },
+                  ]}
+                  curveType="linear"
+              />
+              </Box>
+            </div>
+          </Stack>
+      ) : (
+          <Group h={250} style={{ display: 'flex', flexDirection: 'row' }}>
+            <div style={{ flex: 'auto 0 auto'}}>
+              <CustomCalendar />
+            </div>
+            <div
+                style={{
+                  flex: '1 1 auto',
+                  height: '100%',
+                  padding: '15px',
+                  border: '1px solid #d1dbe8',
+                  borderRadius: 12,
+                }}
+            >
+              <AreaChart
+                  h="100%"
+                  w="100%"
+                  data={data}
+                  dataKey="date"
+                  series={[
+                    { name: 'Apples', color: 'indigo.6' },
+                    { name: 'Oranges', color: 'blue.6' },
+                    { name: 'Tomatoes', color: 'teal.6' },
+                  ]}
+                  curveType="linear"
+              />
+            </div>
+          </Group>
+      )}
 
+
+      {!isMobile && (
       <Group
         justify="space-between"
         style={{ border: '1px solid #d1dbe8', padding: 24, borderRadius: 12 }}
@@ -138,6 +175,7 @@ export default function Page() {
 
         <Button>View students</Button>
       </Group>
+      )}
     </Stack>
   );
 }

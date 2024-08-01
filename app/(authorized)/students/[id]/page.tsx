@@ -15,12 +15,28 @@ import { formatMonthDayYear } from '@repo/src/utils/date';
 import { getOrdinalSuffix } from '@repo/utils';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
-import { useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
+
+type TipTapEditorRef = {
+  clickButton: () => void;
+};
 
 export default function Page() {
   const { id } = useParams();
 
   const [filter, setFilter] = useState<string | null>(null);
+
+  const editorsRefs = useRef<{ [key: string]: TipTapEditorRef }>({});
+
+  const addToRefs = useCallback((key: string, el: TipTapEditorRef | null) => {
+    if (el) {
+      editorsRefs.current[key] = el;
+    }
+  }, []);
+
+  const handleClickAll = () => {
+    Object.values(editorsRefs.current).forEach((ref) => ref.clickButton());
+  };
 
   const {
     data: student,
@@ -32,12 +48,17 @@ export default function Page() {
     queryFn: () => studentsService.getStudent(Number(id), filter),
   });
 
+  // @ts-ignore
   const items = student?.data.lessons
     ? student?.data.lessons.map((lesson) => (
-        <Accordion.Item key={lesson.id} value={lesson.lessonDate}>
+        <Accordion.Item key={lesson.id} value={String(lesson.id)}>
           <Accordion.Control>{`${formatMonthDayYear(lesson.lessonDate)} ${getOrdinalSuffix(lesson.lessonNumber)} lesson`}</Accordion.Control>
           <Accordion.Panel>
-            <TipTapEditor student={student.data} lesson={lesson} />
+            {/*@ts-ignore*/}
+            <TipTapEditor ref={(el) => addToRefs(lesson.id, el)}
+              student={student.data}
+              lesson={lesson}
+            />
           </Accordion.Panel>
         </Accordion.Item>
       ))
@@ -68,7 +89,7 @@ export default function Page() {
               {student?.data.firstName} {student?.data.lastName}
             </Title>
 
-            <Flex gap="sm" mt={4}>
+            <Flex gap="sm" my={8}>
               <Select
                 h={35}
                 placeholder="Pick value"
@@ -94,6 +115,15 @@ export default function Page() {
               Delete Student
             </Button>
           </Flex>
+
+          <Button
+            variant="outline"
+            color="blue"
+            h={35}
+            onClick={handleClickAll}
+          >
+            Export All to .docx
+          </Button>
 
           <Accordion variant="filled" defaultValue="Apples">
             {items}

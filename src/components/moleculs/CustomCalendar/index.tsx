@@ -7,6 +7,7 @@ export const CustomCalendar = () => {
 
   return (
     <Calendar
+      style={{ display: 'flex', justifyContent: 'center' }}
       static
       renderDay={(date) => {
         const day = date.getDate();
@@ -16,7 +17,13 @@ export const CustomCalendar = () => {
           date.getFullYear() === currentDate.getFullYear();
 
         return (
-          <Indicator size={6} color="red" offset={-2} disabled={!isCurrentDay}>
+          <Indicator
+            zIndex={1}
+            size={6}
+            color="red"
+            offset={-2}
+            disabled={!isCurrentDay}
+          >
             <div>{day}</div>
           </Indicator>
         );

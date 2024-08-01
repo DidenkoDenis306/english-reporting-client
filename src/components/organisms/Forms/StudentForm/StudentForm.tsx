@@ -2,7 +2,7 @@
 
 import { useForm } from '@mantine/form';
 import { useStudentsStore } from '@repo/store';
-import { QueryClient } from '@tanstack/react-query';
+import {QueryClient, useQueryClient} from '@tanstack/react-query';
 import { useState } from 'react';
 import {
   Button,
@@ -15,12 +15,15 @@ import {
 import axios from 'axios';
 import { DateInput } from '@mantine/dates';
 import '@mantine/dates/styles.css';
+import {useMediaQuery} from "@mantine/hooks";
 
 export const StudentForm = () => {
   const { addStudent } = useStudentsStore();
   const [loading, setLoading] = useState(false);
 
-  const queryCLient = new QueryClient();
+  const queryClient = useQueryClient();
+
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const form = useForm({
     initialValues: {
@@ -41,9 +44,8 @@ export const StudentForm = () => {
       .post(`${process.env.NEXT_PUBLIC_API_URL}/students`, { ...values, teacherId: 1 })
       .then((response) => {
         addStudent(response.data);
-        form.reset();
-        queryCLient.invalidateQueries({ queryKey: ['students'] });
-      })
+        form.reset()
+      }).then(() => queryClient.invalidateQueries({ queryKey: ['students'] }))
       .catch((error) => {
         console.error('Error adding student:', error);
       })
@@ -55,10 +57,10 @@ export const StudentForm = () => {
   return (
     <Stack
       p={20}
-      w={400}
+      w="100%"
       style={{
         border: '2px solid #228be6',
-        margin: '0 auto',
+        margin: `${isMobile ? 0 : '40px'} auto`,
         borderRadius: '10px',
       }}
     >
