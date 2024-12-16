@@ -6,10 +6,15 @@ import { useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { lessonsService, studentsService } from '@repo/services';
 import { CreateLessonEditor } from '@repo/src/components/organisms';
-import { useCurrentUser, useEditorStore } from '@repo/store';
+import { useEditorStore } from '@repo/store';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
+
+const MAX_WIDTH = 768;
+const STUDENTS_QUERY_KEY = 'students';
+const SUCCESS_MESSAGE = 'Lesson successfully created';
+const ERROR_MESSAGE = 'Server error';
 
 export const LessonForm = () => {
   const { editorContent } = useEditorStore();
@@ -18,12 +23,16 @@ export const LessonForm = () => {
 
   const queryClient = useQueryClient();
 
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  const isMobile = useMediaQuery(`(max-width: ${MAX_WIDTH}px)`);
+
+
+  const now = new Date();
+  const previousMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
 
   const form = useForm({
     initialValues: {
       student: '',
-      lessonDate: new Date(),
+      lessonDate: previousMonth,
       lessonContent: '',
     },
   });

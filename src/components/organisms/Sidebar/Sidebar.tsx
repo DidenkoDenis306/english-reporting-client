@@ -8,7 +8,6 @@ import {
   Stack,
   Text,
 } from '@mantine/core';
-import TimeDisplay from '@repo/src/components/moleculs/TimeDisplay/TimeDisplay';
 import { StudentsList } from '@repo/src/components/organisms';
 import {
   IconCalendarFilled,

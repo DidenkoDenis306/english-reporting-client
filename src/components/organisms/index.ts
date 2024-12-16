@@ -8,3 +8,4 @@ export * from './Sidebar/Sidebar';
 export * from './TipTapEditor/TipTapEditor';
 export * from './CreateLessonEditor/CreateLessonEditor';
 export * from './StudentsList/StudentsList';
+export * from './Calendar/Calendar';
