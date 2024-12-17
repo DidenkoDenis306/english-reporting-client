@@ -30,7 +30,7 @@ export const AuthorizedLayout = ({ children }: PropsWithChildren) => {
 
       <Sidebar closeSb={close} />
 
-      <AppShell.Main>
+      <AppShell.Main pl={290}>
         <Box>{children}</Box>
       </AppShell.Main>
     </AppShell>

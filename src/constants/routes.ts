@@ -1,1 +1,3 @@
-export enum Routes {}
+export enum Routes {
+  Students = '/students',
+}

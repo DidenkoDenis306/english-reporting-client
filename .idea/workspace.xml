@@ -4,30 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ddd9dcd0-aaff-419a-9eee-cc1788af700a" name="Changes" comment="add adaptive">
-      <change afterPath="$PROJECT_DIR$/src/components/pages/CalendarPage/CalendarPage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/CalendarPage/Calendars/DayCalendar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/CalendarPage/Calendars/MonthCalendar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/CalendarPage/Calendars/WeekCalendar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.cjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/english-reporting-client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/english-reporting-client.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+    <list default="true" id="ddd9dcd0-aaff-419a-9eee-cc1788af700a" name="Changes" comment="add calendars">
+      <change afterPath="$PROJECT_DIR$/src/components/pages/ManagmentPage/ManagmentModal/ManagementModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/pages/ManagmentPage/ManagmentModal/Tabs/PaymentTab.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.stylelintignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/organisms/Calendar/Calendar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.stylelintrc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(authorized)/calendar/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(authorized)/calendar/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jest.config.cjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jest.setup.cjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postcss.config.cjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/organisms/Forms/LessonForm/LessonForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/organisms/Forms/LessonForm/LessonForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(authorized)/management/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(authorized)/management/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/ManagmentPage/ManagmentModal/Tabs/GeneralInfoTab.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/AuthorizedLayout/AuthorizedLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/AuthorizedLayout/AuthorizedLayout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/organisms/Sidebar/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/organisms/Sidebar/Sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/organisms/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/organisms/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test-utils/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test-utils/render.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/routes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,24 +55,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.stylelint&quot;: &quot;/Users/denisdidenko/projects/english-reporting-client/node_modules/stylelint&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/denisdidenko/projects/english-reporting-client/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/denisdidenko/projects/english-reporting-client/node_modules/typescript/lib&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/denisdidenko/projects/pet/english-reporting-client/public",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.stylelint": "/Users/denisdidenko/projects/english-reporting-client/node_modules/stylelint",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "prettierjs.PrettierConfiguration.Package": "/Users/denisdidenko/projects/pet/english-reporting-client/node_modules/prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "/Users/denisdidenko/projects/pet/english-reporting-client/node_modules/typescript/lib"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/pages/ManagmentPage/ManagmentModal" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -98,12 +93,24 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add lesson creator" />
     <MESSAGE value="docker settings" />
     <MESSAGE value="fix error with lessons form" />
     <MESSAGE value="run build in dockerfile" />
     <MESSAGE value="add adaptive" />
-    <option name="LAST_COMMIT_MESSAGE" value="add adaptive" />
+    <MESSAGE value="add calendars" />
+    <option name="LAST_COMMIT_MESSAGE" value="add calendars" />
   </component>
 </project>

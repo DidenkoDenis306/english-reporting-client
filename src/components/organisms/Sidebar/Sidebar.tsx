@@ -19,21 +19,29 @@ import {
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { HeaderActions } from '@repo/src/components/moleculs';
+import { useMemo } from 'react';
 
 export const Sidebar = ({ closeSb }: { closeSb: () => void }) => {
   const pathname = usePathname();
 
-  const navLinks = [
-    { title: 'Dashboard', path: '/dashboard', icon: <IconHomeFilled /> },
-    { title: 'Calendar', path: '/calendar', icon: <IconCalendarFilled /> },
-    {
-      title: 'Detailed Statistics',
-      path: '/statistics',
-      icon: <IconChartBar />,
-    },
-    { title: 'Student Management', path: '/management', icon: <IconUsers /> },
-    { title: 'Salary Calculation', path: '/salary', icon: <IconCoinFilled /> },
-  ];
+  const navLinks = useMemo(
+    () => [
+      { title: 'Dashboard', path: '/dashboard', icon: <IconHomeFilled /> },
+      { title: 'Calendar', path: '/calendar', icon: <IconCalendarFilled /> },
+      {
+        title: 'Detailed Statistics',
+        path: '/statistics',
+        icon: <IconChartBar />,
+      },
+      { title: 'Student Management', path: '/management', icon: <IconUsers /> },
+      {
+        title: 'Salary Calculation',
+        path: '/salary',
+        icon: <IconCoinFilled />,
+      },
+    ],
+    [],
+  );
 
   return (
     <AppShell.Navbar px="md" w={270} pt={30}>
