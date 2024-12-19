@@ -9,13 +9,12 @@ import {
   Stack,
   Title,
 } from '@mantine/core';
-import { studentsService } from '@repo/services';
-import { TipTapEditor } from '@repo/src/components/organisms/TipTapEditor/TipTapEditor';
-import { formatMonthDayYear } from '@repo/src/utils/date';
-import { getOrdinalSuffix } from '@repo/utils';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
 import { useCallback, useRef, useState } from 'react';
+import { studentsService } from 'entities/student/api';
+import { formatMonthDayYear, getOrdinalSuffix } from 'shared/utils';
+import { EditLessonEditor } from 'features/editor/ui';
 
 type TipTapEditorRef = {
   clickButton: () => void;
@@ -48,15 +47,15 @@ export default function Page() {
     queryFn: () => studentsService.getStudent(Number(id), filter),
   });
 
-  // @ts-ignore
-  const items = student?.data.lessons
-    ? student?.data.lessons.map((lesson) => (
+  const items = student?.lessons
+    ? student?.lessons.map((lesson) => (
         <Accordion.Item key={lesson.id} value={String(lesson.id)}>
           <Accordion.Control>{`${formatMonthDayYear(lesson.lessonDate)} ${getOrdinalSuffix(lesson.lessonNumber)} lesson`}</Accordion.Control>
           <Accordion.Panel>
-            {/*@ts-ignore*/}
-            <TipTapEditor ref={(el) => addToRefs(lesson.id, el)}
-              student={student.data}
+            <EditLessonEditor
+              // @ts-expect-error
+              ref={(el) => addToRefs(lesson.id, el)}
+              student={student}
               lesson={lesson}
             />
           </Accordion.Panel>
@@ -82,11 +81,11 @@ export default function Page() {
 
   return (
     <>
-      {student?.data && (
+      {student && (
         <Stack>
           <Flex align="center" justify="space-between" wrap={'wrap'}>
             <Title w={500}>
-              {student?.data.firstName} {student?.data.lastName}
+              {student?.firstName} {student?.lastName}
             </Title>
 
             <Flex gap="sm" my={8}>

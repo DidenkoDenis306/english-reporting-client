@@ -1,4 +1,4 @@
-import { LoginPage } from '@repo/src/components/pages';
+import { LoginPage } from 'pages/login/ui';
 
 export default function Page() {
   return <LoginPage />;

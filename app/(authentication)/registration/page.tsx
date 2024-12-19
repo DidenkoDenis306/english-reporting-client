@@ -1,4 +1,4 @@
-import { RegisterForm } from '@repo/src/components/organisms';
+import { RegisterForm } from 'features/auth/ui/RegisterForm';
 
 export default function Page() {
   return <RegisterForm />;

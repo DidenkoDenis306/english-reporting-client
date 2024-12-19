@@ -16,17 +16,7 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@repo/*": ["./*"],
-      "@repo/constants": ["./src/constants"],
-      "@repo/components": ["./src/components"],
-      "@repo/http": ["./src/http"],
-      "@repo/providers": ["./src/providers"],
-      "@repo/services": ["./src/services"],
-      "@repo/store": ["./src/store"],
-      "@repo/types": ["./src/types"],
-      "@repo/utils": ["./src/utils"],
-      "@repo/validation": ["./src/validation"],
-
+      "*": ["./src/*"],
     },
     "plugins": [{ "name": "next" }]
   },

@@ -2,12 +2,12 @@ import '@mantine/core/styles.css';
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
 import { Notifications } from '@mantine/notifications';
-import { ReactQueryProvider } from '@repo/providers';
 import React from 'react';
 import { theme } from '../theme';
 import '@mantine/dates/styles.css';
 import '@mantine/tiptap/styles.css';
 import '@mantine/notifications/styles.css';
+import { QueryProvider } from 'app/providers';
 
 export const metadata = {
   title: 'English Tutoring Reports',
@@ -30,14 +30,14 @@ export default function RootLayout({ children }: { children: any }) {
         />
       </head>
       <body>
-        <ReactQueryProvider>
+        <QueryProvider>
           <MantineProvider theme={theme}>
             <ModalsProvider>
               <Notifications />
               {children}
             </ModalsProvider>
           </MantineProvider>
-        </ReactQueryProvider>
+        </QueryProvider>
       </body>
     </html>
   );

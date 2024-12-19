@@ -1,6 +1,6 @@
 'use client';
 
-import { CalendarPage } from '@repo/src/components/pages/CalendarPage/CalendarPage';
+import { CalendarPage } from 'pages/calendar/ui';
 
 export default function Page() {
   return <CalendarPage />;
