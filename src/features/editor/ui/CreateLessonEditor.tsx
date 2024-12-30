@@ -92,6 +92,7 @@ export const CreateLessonEditor: FC<Props> = ({ student, lessonDate }) => {
         `<h3>${documentName}<br></h3>`,
       );
       editor.commands.setContent(updatedContent);
+      setEditorContent(updatedContent);
     }
   }, [student, lessonDate, editor]);
 

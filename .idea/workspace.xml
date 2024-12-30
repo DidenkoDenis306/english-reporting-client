@@ -4,16 +4,68 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ddd9dcd0-aaff-419a-9eee-cc1788af700a" name="Changes" comment="add calendars">
-      <change afterPath="$PROJECT_DIR$/src/components/pages/ManagmentPage/ManagmentModal/ManagementModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/ManagmentPage/ManagmentModal/Tabs/PaymentTab.tsx" afterDir="false" />
+    <list default="true" id="ddd9dcd0-aaff-419a-9eee-cc1788af700a" name="Changes" comment="finish refactoring">
+      <change afterPath="$PROJECT_DIR$/src/entities/lesson/ui/LessonsChart.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/lesson/ui/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/openai/api/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/openai/api/openaiClient.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/openai/lib/constants.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/openai/lib/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/openai/lib/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/openai/model/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/openai/model/openaiModel.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/student/ui/StudentFullName.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/date-period-filter/ui/DatePeriodFilter.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/date-period-filter/ui/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/dashboard/ui/DashboardPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/dashboard/ui/components/CalendarSection.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/dashboard/ui/components/Greeting.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/dashboard/ui/components/StatisticsCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/dashboard/ui/components/StudentsToday.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/dashboard/ui/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/registration/ui/RegisterPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/registration/ui/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/view-lessons/model/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/view-lessons/model/useViewLessonsPage.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/view-lessons/ui/ViewLessonsPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/view-lessons/ui/components/LessonsAccordion.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/view-lessons/ui/components/ViewLessonsActions.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/view-lessons/ui/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/config/mediaSizes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/hooks/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/hooks/useMobile.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/Loader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/NavigationLink.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(authorized)/management/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(authorized)/management/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(authentication)/registration/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(authentication)/registration/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(authorized)/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(authorized)/dashboard/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(authorized)/students/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(authorized)/students/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/ManagmentPage/ManagmentModal/Tabs/GeneralInfoTab.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layouts/AuthorizedLayout/AuthorizedLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/AuthorizedLayout/AuthorizedLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/organisms/Sidebar/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/organisms/Sidebar/Sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/middleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layouts/AuthorizedLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layouts/AuthorizedLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/student/ui/CreateStudentForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/student/ui/CreateStudentForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/student/ui/StudentsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/student/ui/StudentsList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/student/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/student/ui/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/editor/ui/CreateLessonEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/editor/ui/CreateLessonEditor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/editor/ui/EditLessonEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/editor/ui/EditLessonEditor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/management/ui/ManagementPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/management/ui/ManagementPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/management/ui/ManagmentModal/ManagementModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/management/ui/ManagmentModal/ManagementModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/management/ui/ManagmentModal/Tabs/PaymentTab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/management/ui/ManagmentModal/Tabs/PaymentTab.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/config/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/config/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/config/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/config/routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/createLessonForm/ui/CreateLessonForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/CreateLessonForm/ui/CreateLessonForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/createLessonForm/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/CreateLessonForm/ui/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/header/ui/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/Header/ui/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/header/ui/TimeDisplay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/Header/ui/TimeDisplay.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/header/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/Header/ui/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/sidebar/ui/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/Sidebar/ui/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/sidebar/ui/SidebarActions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/Sidebar/ui/SidebarActions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/sidebar/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/Sidebar/ui/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,31 +107,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/denisdidenko/projects/pet/english-reporting-client/public",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.stylelint": "/Users/denisdidenko/projects/english-reporting-client/node_modules/stylelint",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "prettierjs.PrettierConfiguration.Package": "/Users/denisdidenko/projects/pet/english-reporting-client/node_modules/prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "/Users/denisdidenko/projects/pet/english-reporting-client/node_modules/typescript/lib"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/denisdidenko/projects/pet/english-reporting-client/src/pages/student&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;/Users/denisdidenko/projects/english-reporting-client/node_modules/stylelint&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/denisdidenko/projects/pet/english-reporting-client/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/denisdidenko/projects/pet/english-reporting-client/node_modules/typescript/lib&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/student" />
+      <recent name="$PROJECT_DIR$/src/pages/statistics" />
+      <recent name="$PROJECT_DIR$/src/pages/salary" />
       <recent name="$PROJECT_DIR$/public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/pages/ManagmentPage/ManagmentModal" />
+      <recent name="$PROJECT_DIR$/src/pages/dashboard/ui/components" />
+      <recent name="$PROJECT_DIR$/src/pages/dashboard/ui" />
+      <recent name="$PROJECT_DIR$/src/pages/management/ui" />
+      <recent name="$PROJECT_DIR$/src/features/calendar/ui" />
+      <recent name="$PROJECT_DIR$/src/widgets/header/ui" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -111,6 +170,9 @@
     <MESSAGE value="run build in dockerfile" />
     <MESSAGE value="add adaptive" />
     <MESSAGE value="add calendars" />
-    <option name="LAST_COMMIT_MESSAGE" value="add calendars" />
+    <MESSAGE value="add management" />
+    <MESSAGE value="architecture refactoring: feature sliced design" />
+    <MESSAGE value="finish refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish refactoring" />
   </component>
 </project>

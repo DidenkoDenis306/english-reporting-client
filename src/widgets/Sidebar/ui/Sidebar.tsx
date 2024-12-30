@@ -18,25 +18,35 @@ import {
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
-import { SidebarActions } from 'widgets/sidebar/ui/SidebarActions';
+import { SidebarActions } from 'widgets/Sidebar/ui/SidebarActions';
 import { StudentsList } from 'entities/student/ui';
+import { Routes } from 'shared/config';
+import { NavigationLink } from 'shared/ui';
 
 export const Sidebar = ({ closeSb }: { closeSb: () => void }) => {
   const pathname = usePathname();
 
   const navLinks = useMemo(
     () => [
-      { title: 'Dashboard', path: '/dashboard', icon: <IconHomeFilled /> },
-      { title: 'Calendar', path: '/calendar', icon: <IconCalendarFilled /> },
+      { title: 'Dashboard', path: Routes.dashboard, icon: <IconHomeFilled /> },
+      {
+        title: 'Calendar',
+        path: Routes.calendar,
+        icon: <IconCalendarFilled />,
+      },
       {
         title: 'Detailed Statistics',
-        path: '/statistics',
+        path: Routes.statistics,
         icon: <IconChartBar />,
       },
-      { title: 'Student Management', path: '/management', icon: <IconUsers /> },
+      {
+        title: 'Student Management',
+        path: Routes.management,
+        icon: <IconUsers />,
+      },
       {
         title: 'Salary Calculation',
-        path: '/salary',
+        path: Routes.salary,
         icon: <IconCoinFilled />,
       },
     ],
@@ -49,32 +59,20 @@ export const Sidebar = ({ closeSb }: { closeSb: () => void }) => {
         <Stack justify="space-between" h="100%" pb={12}>
           <Stack gap="md">
             {navLinks.map((link) => (
-              <Link
+              <NavigationLink
                 key={link.path}
-                href={link.path}
-                style={{ textDecoration: 'none', color: 'rgb(71, 77, 102)' }}
+                path={link.path}
+                title={link.title}
+                icon={link.icon}
+                isActive={pathname === link.path}
                 onClick={closeSb}
-              >
-                <Flex
-                  gap={12}
-                  align="center"
-                  p={8}
-                  bg={pathname === link.path ? '#ededed' : 'transparent'}
-                  style={{ borderRadius: 8 }}
-                >
-                  {link.icon}
-                  <Text fz={14}>{link.title}</Text>
-                </Flex>
-              </Link>
+              />
             ))}
-
             <Stack gap="md">
               <Divider />
-
               <StudentsList closeSb={closeSb} />
             </Stack>
           </Stack>
-
           <SidebarActions />
         </Stack>
       </ScrollArea>

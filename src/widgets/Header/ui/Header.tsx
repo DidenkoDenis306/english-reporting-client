@@ -3,7 +3,8 @@
 import { AppShell, Burger, Flex, Text } from '@mantine/core';
 import Link from 'next/link';
 import { useMediaQuery } from '@mantine/hooks';
-import TimeDisplay from 'widgets/header/ui/TimeDisplay';
+import TimeDisplay from 'widgets/Header/ui/TimeDisplay';
+import { Routes } from 'shared/config';
 
 interface Props {
   opened: boolean;
@@ -31,7 +32,7 @@ export const Header = ({ opened, toggle }: Props) => {
             mx={isMobile ? 10 : 20}
           />
 
-          <Link href="/dashboard" style={{ textDecoration: 'none' }}>
+          <Link href={Routes.dashboard} style={{ textDecoration: 'none' }}>
             <Text
               style={{ fontSize: isMobile ? 24 : 28, whiteSpace: 'nowrap' }}
               fw="bold"

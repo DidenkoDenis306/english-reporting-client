@@ -1,0 +1,1 @@
+export { useViewLessonsPage } from './useViewLessonsPage';

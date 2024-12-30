@@ -58,7 +58,7 @@ export const ManagementPage = () => {
               />
 
               <Text>{student.firstName + ' ' + student.lastName}</Text>
-              {/*<Text>Total lessons: {student.lessonsCount}</Text>*/}
+              {/*<Text>Total lessons: {view-lessons.lessonsCount}</Text>*/}
               <Button onClick={() => push(`${Routes.students}/${student.id}`)}>
                 View lessons
               </Button>

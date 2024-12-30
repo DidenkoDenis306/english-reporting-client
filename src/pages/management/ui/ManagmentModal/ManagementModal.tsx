@@ -72,7 +72,7 @@ export const ManagementModal: FC<Props> = ({ studentId, isOpen, onClose }) => {
       onClose={onClose}
       title="Detailed Managment"
     >
-      <Flex h={400}>
+      <Flex h={420}>
         <Stack
           w={200}
           p={12}

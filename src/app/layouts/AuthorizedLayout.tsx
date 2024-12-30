@@ -3,8 +3,8 @@
 import { AppShell, Box } from '@mantine/core';
 import { PropsWithChildren, useEffect } from 'react';
 import { useDisclosure } from '@mantine/hooks';
-import { Header } from 'widgets/header/ui';
-import { Sidebar } from 'widgets/sidebar/ui';
+import { Header } from 'widgets/Header/ui';
+import { Sidebar } from 'widgets/Sidebar/ui';
 
 export const AuthorizedLayout = ({ children }: PropsWithChildren) => {
   const [opened, { toggle, close }] = useDisclosure();

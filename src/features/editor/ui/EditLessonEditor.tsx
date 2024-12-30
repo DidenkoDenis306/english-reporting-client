@@ -7,9 +7,13 @@ import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 import { saveAs } from 'file-saver';
-import React, { FC, forwardRef, useImperativeHandle, useRef } from 'react';
+import React, { FC, forwardRef, Ref, useImperativeHandle, useRef } from 'react';
 import { formatDate, getOrdinalSuffix } from 'shared/utils';
 import { IStudent } from 'entities/student/model';
+
+export type TipTapEditorRef = {
+  clickButton: () => void;
+};
 
 interface Props {
   student: IStudent;
@@ -17,7 +21,7 @@ interface Props {
 }
 
 export const EditLessonEditor: FC<Props> = forwardRef(
-  ({ student, lesson }, ref) => {
+  ({ student, lesson }, ref: Ref<TipTapEditorRef>) => {
     const documentName = `${student.firstName} ${student?.lastName}, ${getOrdinalSuffix(lesson.lessonNumber)} lesson, ${formatDate(lesson.lessonDate)}`;
 
     const editor = useEditor({
@@ -31,7 +35,6 @@ export const EditLessonEditor: FC<Props> = forwardRef(
     `,
     });
 
-    const buttonRef = useRef<HTMLButtonElement | null>(null);
     const exportToDocx = async () => {
       if (!editor) return;
 
@@ -84,12 +87,6 @@ export const EditLessonEditor: FC<Props> = forwardRef(
       saveAs(blob, `${documentName}.docx`);
     };
 
-    useImperativeHandle(ref, () => ({
-      clickButton() {
-        buttonRef.current?.click();
-      },
-    }));
-
     return (
       <Stack gap="md">
         <RichTextEditor editor={editor}>
@@ -141,7 +138,7 @@ export const EditLessonEditor: FC<Props> = forwardRef(
           <RichTextEditor.Content />
         </RichTextEditor>
 
-        <Button ref={buttonRef} onClick={exportToDocx} w={150}>
+        <Button onClick={exportToDocx} w={150}>
           Export to .docx
         </Button>
       </Stack>

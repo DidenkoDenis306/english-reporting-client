@@ -4,6 +4,7 @@ import { ModalsProvider } from '@mantine/modals';
 import { Notifications } from '@mantine/notifications';
 import React from 'react';
 import { theme } from '../theme';
+import '@mantine/charts/styles.css';
 import '@mantine/dates/styles.css';
 import '@mantine/tiptap/styles.css';
 import '@mantine/notifications/styles.css';

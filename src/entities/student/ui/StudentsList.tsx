@@ -4,13 +4,10 @@ import { NavLink, ScrollArea, Stack } from '@mantine/core';
 import { IconUsers } from '@tabler/icons-react';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
 import { useCurrentUser } from 'entities/user/model';
 import { studentsService } from 'entities/student/api';
 
 export const StudentsList = ({ closeSb }: { closeSb: () => void }) => {
-  const { id } = useParams();
-
   const { currentUser } = useCurrentUser();
 
   const { data: students, isLoading } = useQuery({
@@ -19,14 +16,14 @@ export const StudentsList = ({ closeSb }: { closeSb: () => void }) => {
     queryFn: () => studentsService.getStudents(Number(currentUser?.id) || 0),
   });
 
-  // const onRemoveStudent = (student: IStudent) => {
+  // const onRemoveStudent = (view-lessons: IStudent) => {
   //   modals.openConfirmModal({
   //     title: 'Removing Student',
   //     children: (
-  //       <Text>{`Are you sure you want to remove the student ${student.firstName} ${student.lastName}?`}</Text>
+  //       <Text>{`Are you sure you want to remove the view-lessons ${view-lessons.firstName} ${view-lessons.lastName}?`}</Text>
   //     ),
   //     labels: { confirm: 'Confirm', cancel: 'Cancel' },
-  //     onConfirm: () => removeStudent(student.id),
+  //     onConfirm: () => removeStudent(view-lessons.id),
   //   });
   // };
 

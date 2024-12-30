@@ -43,7 +43,7 @@ export const CreateStudentForm = () => {
     axios
       .post(`${process.env.NEXT_PUBLIC_API_URL}/students`, {
         ...values,
-        teacherId: 1,
+        teacherId: 3,
       })
       .then((response) => {
         addStudent(response.data);
@@ -51,7 +51,7 @@ export const CreateStudentForm = () => {
       })
       .then(() => queryClient.invalidateQueries({ queryKey: ['students'] }))
       .catch((error) => {
-        console.error('Error adding student:', error);
+        console.error('Error adding view-lessons:', error);
       })
       .finally(() => {
         setLoading(false);

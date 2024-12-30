@@ -1,16 +1,12 @@
 'use client';
 
-import { Button, Drawer, Stack, useMantineColorScheme } from '@mantine/core';
-import { useDisclosure, useMediaQuery } from '@mantine/hooks';
+import { Button, Drawer, Stack } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 import React from 'react';
 import { CreateStudentForm } from 'entities/student/ui';
-import { CreateLessonForm } from 'widgets/createLessonForm/ui';
+import { CreateLessonForm } from 'widgets/CreateLessonForm/ui';
 
 export function SidebarActions() {
-  const { setColorScheme } = useMantineColorScheme();
-
-  const isMobile = useMediaQuery('(max-width: 768px)');
-
   const [openedStudent, { open: openStudent, close: closeStudent }] =
     useDisclosure(false);
   const [openedLesson, { open: openLesson, close: closeLesson }] =
@@ -33,7 +29,6 @@ export function SidebarActions() {
         size="xl"
         overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
         withCloseButton={true}
-        // zIndex={9999999}
       >
         <CreateLessonForm />
       </Drawer>
@@ -45,13 +40,9 @@ export function SidebarActions() {
         title={'Add Student'}
         overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
         withCloseButton={true}
-        // zIndex={9999999}
       >
         <CreateStudentForm />
       </Drawer>
-      {/*<Button onClick={() => setColorScheme('light')}>Light</Button>*/}
-      {/*<Button onClick={() => setColorScheme('dark')}>Dark</Button>*/}
-      {/*<Button onClick={() => setColorScheme('auto')}>Auto</Button>*/}
     </Stack>
   );
 }
