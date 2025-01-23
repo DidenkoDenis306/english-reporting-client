@@ -23,22 +23,16 @@ export const DayCalendar: FC<Props> = ({ currentDate }) => {
 
   const firstDayOfMonth =
     (dayjs(new Date(currentYear, currentMonth, 1)).day() + 6) % 7;
-  const daysInCurrentMonth = dayjs().daysInMonth();
-  const daysInPreviousMonth = dayjs(
-    new Date(currentYear, currentMonth - 1, 1),
-  ).daysInMonth();
-  const totalCells = columns * rows;
-  const leadingDays = Math.max(firstDayOfMonth, 4);
-  const nextMonthDaysStart = daysInCurrentMonth + leadingDays;
-  const daysOfWeek = [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday',
-  ];
+
+  const daysOfWeek = {
+    0: 'Sunday',
+    1: 'Monday',
+    2: 'Tuesday',
+    3: 'Wednesday',
+    4: 'Thursday',
+    5: 'Friday',
+    6: 'Saturday',
+  };
 
   return (
     <Container size="lg" py={30} style={{ transform: 'translateX(-28px)' }}>
@@ -47,7 +41,7 @@ export const DayCalendar: FC<Props> = ({ currentDate }) => {
           return (
             <Grid.Col key={index} span={12 / columns}>
               <Stack justify="center" align="center">
-                <span>{daysOfWeek[index % 7]}</span>
+                <span>{daysOfWeek[currentDate.day()]}</span>
                 <span>{currentDate.format('D')}</span>
               </Stack>
             </Grid.Col>

@@ -16,16 +16,17 @@ export const MonthCalendar: FC<Props> = ({ currentDate }) => {
   };
   const { columns, rows } = config.month;
 
-  const firstDayOfMonth =
-    (dayjs(new Date(currentYear, currentMonth, 1)).day() + 6) % 7;
-  const daysInCurrentMonth = dayjs().daysInMonth();
+  const firstDayOfMonth = dayjs(new Date(currentYear, currentMonth, 1)).day();
+  const daysInCurrentMonth = dayjs(
+    new Date(currentYear, currentMonth),
+  ).daysInMonth();
   const daysInPreviousMonth = dayjs(
-    new Date(currentYear, currentMonth - 1, 1),
+    new Date(currentYear, currentMonth - 1),
   ).daysInMonth();
 
   const totalCells = columns * rows;
 
-  const leadingDays = Math.max(firstDayOfMonth, 4);
+  const leadingDays = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
   const nextMonthDaysStart = daysInCurrentMonth + leadingDays;
 
   const daysOfWeek = [
