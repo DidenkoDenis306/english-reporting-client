@@ -1,23 +1,29 @@
 'use client';
 
-import { Avatar, Button, Flex, Stack, Text, Title } from '@mantine/core';
+import { Box, Loader, Stack, TextInput, Title } from '@mantine/core';
+import { useDebouncedValue, useDisclosure } from '@mantine/hooks';
 import { useQuery } from '@tanstack/react-query';
-import { useRouter } from 'next/navigation';
-import { useDisclosure } from '@mantine/hooks';
-import { useState } from 'react';
-import { useCurrentUser } from 'entities/user/model';
 import { studentsService } from 'entities/student/api';
-import { Routes } from 'shared/config';
-import { ManagementModal } from 'pages/management/ui/ManagmentModal/ManagementModal';
+import { IStudent } from 'entities/student/model';
+import { useCurrentUser } from 'entities/user/model';
+import { PaymentModal } from 'features/payment/ui';
+import { useState } from 'react';
+import { ManagementActionsMenu } from './ManagementActionsMenu';
+import { StudentsGrid } from './StudentsGrid';
 
 export const ManagementPage = () => {
-  const { push } = useRouter();
-
-  const [opened, { open, close }] = useDisclosure(false);
+  const [
+    openedPaymentsModal,
+    { open: openPaymentsModal, close: closePaymentsModal },
+  ] = useDisclosure(false);
 
   const { currentUser } = useCurrentUser();
 
-  const [selectedStudent, setSelectedStudent] = useState<number | null>(null);
+  const [selectedStudentId, setSelectedStudentId] = useState<number | null>(
+    null,
+  );
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [debouncedSearchQuery] = useDebouncedValue(searchQuery, 300);
 
   const { data: students, isPending } = useQuery({
     enabled: Boolean(currentUser),
@@ -25,52 +31,49 @@ export const ManagementPage = () => {
     queryFn: () => studentsService.getStudents(Number(currentUser?.id) || 0),
   });
 
-  const handleClickStudentCard = (studentId: number) => {
-    setSelectedStudent(studentId);
-    open();
+  const onSelectStudent = (studentId: number) => {
+    setSelectedStudentId(studentId);
   };
 
+  const filteredStudents = students?.filter((student: IStudent) =>
+    `${student.firstName} ${student.lastName}`
+      .toLowerCase()
+      .includes(debouncedSearchQuery.toLowerCase()),
+  );
+
   return (
-    <Stack>
-      {students && <Title>Student Amount: {students.length}</Title>}
-      <Flex gap="md" wrap="wrap">
-        {isPending && <Text>Loading...</Text>}
-
-        {students &&
-          students.map((student) => (
-            <Stack
-              p={12}
-              style={{
-                border: '1px solid lightgray',
-                borderRadius: 10,
-                cursor: 'pointer',
-              }}
-              align="center"
-              justify="space-between"
-              w={160}
-              onClick={() => handleClickStudentCard(student.id)}
-            >
-              <Avatar
-                key={`${student.firstName} ${student.lastName}`}
-                name={`${student.firstName} ${student.lastName}`}
-                color="initials"
-                size="lg"
+    <>
+      {isPending ? (
+        <Stack gap="xl" align="center">
+          <Title order={3}>Loading students...</Title>
+          <Loader />
+        </Stack>
+      ) : (
+        <Stack gap="lg">
+          <TextInput
+            w={300}
+            placeholder="Search students"
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.currentTarget.value)}
+          />
+          <StudentsGrid
+            students={filteredStudents ?? []}
+            actionsMenu={(student: IStudent) => (
+              <ManagementActionsMenu
+                student={student}
+                openPaymentsModal={openPaymentsModal}
+                onSelectStudent={onSelectStudent}
               />
+            )}
+          />
+        </Stack>
+      )}
 
-              <Text>{student.firstName + ' ' + student.lastName}</Text>
-              {/*<Text>Total lessons: {view-lessons.lessonsCount}</Text>*/}
-              <Button onClick={() => push(`${Routes.students}/${student.id}`)}>
-                View lessons
-              </Button>
-            </Stack>
-          ))}
-      </Flex>
-
-      <ManagementModal
-        studentId={selectedStudent}
-        isOpen={opened}
-        onClose={close}
+      <PaymentModal
+        studentId={selectedStudentId}
+        isOpen={openedPaymentsModal}
+        onClose={closePaymentsModal}
       />
-    </Stack>
+    </>
   );
 };

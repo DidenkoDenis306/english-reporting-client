@@ -1,4 +1,4 @@
-import { Badge, Button, Flex, Stack, Text } from '@mantine/core';
+import { Badge, Button, Flex, Stack, Text, Title } from '@mantine/core';
 import { FC, useState } from 'react';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
@@ -28,6 +28,7 @@ export const PaymentTab: FC<Props> = ({
       index === 0 ? 'NOT PAID' : 'PAID',
     ]);
 
+    // @ts-expect-error
     doc.autoTable({
       head: [['Lesson Date', 'Price', 'Status']],
       body: tableData,
@@ -37,6 +38,7 @@ export const PaymentTab: FC<Props> = ({
     doc.text(
       `Total payable: ${debt > 0 ? debt : '0'} ${currency}`,
       14,
+      // @ts-expect-error
       doc.lastAutoTable.finalY + 10,
     );
 
@@ -46,6 +48,7 @@ export const PaymentTab: FC<Props> = ({
 PayPal: ddidenko441@gmail.com
       `,
       14,
+      // @ts-expect-error
       doc.lastAutoTable.finalY + 30,
     );
 
@@ -53,65 +56,71 @@ PayPal: ddidenko441@gmail.com
   };
 
   return (
-    <Stack gap={30} h="100%">
-      <Stack>
-        <Flex
-          c="blue"
-          align="center"
-          p={12}
-          bg="rgba(34, 139, 230, 0.1)"
-          style={{ borderRadius: 8 }}
-        >
-          <Text fz={12} style={{ width: '40%' }}>
-            LESSON DATE
-          </Text>
-          <Text fz={12} style={{ width: '30%', textAlign: 'center' }}>
-            PRICE
-          </Text>
-          <Text fz={12} style={{ width: '30%', textAlign: 'right' }}>
-            STATUS
-          </Text>
-        </Flex>
-        {lessons.map((lesson, index) => (
-          <Flex
-            key={index}
-            align="center"
-            p={12}
-            pt={0}
-            style={{ borderBottom: '1px solid lightgrey' }}
-          >
-            <Text fz={14} fw={400} style={{ width: '40%' }}>
-              {formatMonthDayYear(lesson.lessonDate)}
-            </Text>
-            <Text fz={14} style={{ width: '30%', textAlign: 'center' }}>
-              {`${price} ${currency}`}
-            </Text>
-            <Text fz={14} style={{ width: '30%', textAlign: 'right' }}>
-              <BadgeWithHover status={index === 0 ? 'NOT PAID' : 'PAID'} />
-            </Text>
+    <>
+      {lessons.length === 0 ? (
+        <Title order={3}>No lessons yet</Title>
+      ) : (
+        <Stack gap={30} h="100%">
+          <Stack>
+            <Flex
+              c="blue"
+              align="center"
+              p={12}
+              bg="rgba(34, 139, 230, 0.1)"
+              style={{ borderRadius: 8 }}
+            >
+              <Text fz={12} style={{ width: '40%' }}>
+                LESSON DATE
+              </Text>
+              <Text fz={12} style={{ width: '30%', textAlign: 'center' }}>
+                PRICE
+              </Text>
+              <Text fz={12} style={{ width: '30%', textAlign: 'right' }}>
+                STATUS
+              </Text>
+            </Flex>
+            {lessons.map((lesson, index) => (
+              <Flex
+                key={index}
+                align="center"
+                p={12}
+                pt={0}
+                style={{ borderBottom: '1px solid lightgrey' }}
+              >
+                <Text fz={14} fw={400} style={{ width: '40%' }}>
+                  {formatMonthDayYear(lesson.lessonDate)}
+                </Text>
+                <Text fz={14} style={{ width: '30%', textAlign: 'center' }}>
+                  {`${price} ${currency}`}
+                </Text>
+                <Text fz={14} style={{ width: '30%', textAlign: 'right' }}>
+                  <BadgeWithHover status={index === 0 ? 'NOT PAID' : 'PAID'} />
+                </Text>
+              </Flex>
+            ))}
+          </Stack>
+
+          <Flex align="center" justify="space-between">
+            <span>
+              Debt:{' '}
+              <span
+                style={{
+                  color: debt > 0 ? 'red' : 'green',
+                  display: 'inline',
+                  fontWeight: 600,
+                }}
+              >
+                {debt} UAH
+              </span>
+            </span>
+
+            <Button variant="light" onClick={downloadPdf}>
+              Download receipt
+            </Button>
           </Flex>
-        ))}
-      </Stack>
-
-      <Flex align="center" justify="space-between">
-        <span>
-          Debt:{' '}
-          <span
-            style={{
-              color: debt > 0 ? 'red' : 'green',
-              display: 'inline',
-              fontWeight: 600,
-            }}
-          >
-            {debt} UAH
-          </span>
-        </span>
-
-        <Button variant="light" onClick={downloadPdf}>
-          Download receipt
-        </Button>
-      </Flex>
-    </Stack>
+        </Stack>
+      )}
+    </>
   );
 };
 
