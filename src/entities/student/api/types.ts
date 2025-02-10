@@ -1,3 +1,5 @@
+import { ILesson } from 'entities/lesson/model';
+
 export interface IStudentResponse {
   id: number;
   firstName: string;
@@ -9,5 +11,5 @@ export interface IStudentResponse {
   price: number;
   currency: 'USD' | 'UAH';
   isPrivate: boolean;
-  lessons: any[];
+  lessons: ILesson[];
 }

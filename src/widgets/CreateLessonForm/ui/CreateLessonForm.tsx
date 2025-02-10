@@ -11,6 +11,7 @@ import { useEditorStore } from 'features/editor/model';
 import { lessonsService } from 'entities/lesson/api/lessonsService';
 import { CreateLessonEditor } from 'features/editor/ui';
 import { IStudent } from 'entities/student/model';
+import dayjs from 'dayjs';
 
 const MAX_WIDTH = 768;
 
@@ -77,12 +78,13 @@ export const CreateLessonForm = () => {
   const handleSubmit = form.onSubmit((values) => {
     createLesson({
       ...values,
-      // TODO: make dynamic
-      teacherId: 1,
+      teacherId: 1, // TODO: заменить на динамическое значение
       studentId: student?.id,
       lessonContent: editorContent,
     });
   });
+
+  console.log(form.values);
 
   return (
     <Stack w="100%">

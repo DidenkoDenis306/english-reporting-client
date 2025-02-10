@@ -4,7 +4,7 @@ import { useMobile } from 'shared/hooks';
 
 interface Props {
   title: string;
-  value: string;
+  value: string | number;
 }
 
 export const StatisticsCard: FC<Props> = ({ title, value }) => {

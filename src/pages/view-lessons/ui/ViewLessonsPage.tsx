@@ -43,6 +43,8 @@ export function ViewLessonsPage() {
     );
   }
 
+  console.log(student?.lessons);
+
   return (
     <>
       {student && (

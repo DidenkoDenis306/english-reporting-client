@@ -10,3 +10,5 @@ export {
 } from './date';
 
 export { getOrdinalSuffix } from './getOrdinalSuffix';
+
+export { hashStringToColor } from './hashStringToColor';

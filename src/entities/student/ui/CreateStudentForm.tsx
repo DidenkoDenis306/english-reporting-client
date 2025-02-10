@@ -16,8 +16,19 @@ import { DateInput } from '@mantine/dates';
 import '@mantine/dates/styles.css';
 import { useMediaQuery } from '@mantine/hooks';
 import { useStudentsStore } from 'entities/student/model';
+import { useCurrentUser } from 'entities/user/model';
+import { useRouter } from 'next/navigation';
+import { Routes } from 'shared/config';
 
 export const CreateStudentForm = () => {
+  const { push } = useRouter();
+
+  const { currentUser } = useCurrentUser();
+
+  if (!currentUser) {
+    push(Routes.login);
+  }
+
   const { addStudent } = useStudentsStore();
   const [loading, setLoading] = useState(false);
 
@@ -38,12 +49,13 @@ export const CreateStudentForm = () => {
     },
   });
 
+  // TODO: react query
   const onSubmit = form.onSubmit((values) => {
     setLoading(true);
     axios
       .post(`${process.env.NEXT_PUBLIC_API_URL}/students`, {
         ...values,
-        teacherId: 3,
+        teacherId: currentUser?.id,
       })
       .then((response) => {
         addStudent(response.data);

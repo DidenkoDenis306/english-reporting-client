@@ -11,6 +11,7 @@ import {
 import {
   IconCalendarFilled,
   IconChartBar,
+  IconClipboardList,
   IconCoinFilled,
   IconHomeFilled,
   IconUsers,
@@ -35,14 +36,19 @@ export const Sidebar = ({ closeSb }: { closeSb: () => void }) => {
         icon: <IconCalendarFilled />,
       },
       {
-        title: 'Detailed Statistics',
-        path: Routes.statistics,
-        icon: <IconChartBar />,
+        title: 'Planner',
+        path: Routes.planner,
+        icon: <IconClipboardList />,
       },
       {
         title: 'Student Management',
         path: Routes.management,
         icon: <IconUsers />,
+      },
+      {
+        title: 'Detailed Statistics',
+        path: Routes.statistics,
+        icon: <IconChartBar />,
       },
       {
         title: 'Salary Calculation',

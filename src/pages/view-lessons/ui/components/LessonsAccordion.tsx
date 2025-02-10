@@ -1,4 +1,4 @@
-import { Accordion } from '@mantine/core';
+import { Accordion, Title } from '@mantine/core';
 import { formatMonthDayYear, getOrdinalSuffix } from 'shared/utils';
 import { IStudent } from 'entities/student/model';
 import { EditLessonEditor } from 'features/editor/ui';
@@ -8,8 +8,14 @@ interface Props {
 }
 
 export function LessonsAccordion({ student }: Props) {
+  console.log(student);
+
+  if (!student.lessons) {
+    return <Title>No lessons</Title>;
+  }
+
   const renderLessons = () =>
-    student.lessons.map((lesson: ILesson) => (
+    student?.lessons.map((lesson: ILesson) => (
       <Accordion.Item key={lesson.id} value={String(lesson.id)}>
         <Accordion.Control>
           {`${formatMonthDayYear(lesson.lessonDate)} ${getOrdinalSuffix(lesson.lessonNumber)} lesson`}

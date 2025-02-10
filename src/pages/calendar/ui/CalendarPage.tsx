@@ -6,20 +6,25 @@ import {
   Button,
   Flex,
   Group,
+  Menu,
+  Modal,
   Select,
   Text,
-  Title,
 } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
-import { useState } from 'react';
 import dayjs from 'dayjs';
+import { ShownStudentsList } from 'entities/student/ui';
 import { DayCalendar, MonthCalendar, WeekCalendar } from 'features/calendar/ui';
+import { useState } from 'react';
 
 export type CalendarPreset = 'month' | 'week' | 'day';
 
 export const CalendarPage = () => {
   const [preset, setPreset] = useState<CalendarPreset>('month');
   const [currentDate, setCurrentDate] = useState(dayjs());
+
+  const [hiddenStudents, setHiddenStudents] = useState<string[]>([]);
 
   const handlePresetChange = (value: string | null) => {
     if (value === 'month' || value === 'week' || value === 'day') {
@@ -65,7 +70,15 @@ export const CalendarPage = () => {
         justify="space-between"
       >
         <Group>
-          <Title order={2}>Calendar</Title>
+          <Menu>
+            <Menu.Target>
+              <Button variant="light">Shown Students</Button>
+            </Menu.Target>
+
+            <Menu.Dropdown>
+              <ShownStudentsList />
+            </Menu.Dropdown>
+          </Menu>
 
           <Group gap={10}>
             <ActionIcon
@@ -115,7 +128,9 @@ export const CalendarPage = () => {
 
       {preset === 'week' && <WeekCalendar currentDate={currentDate} />}
 
-      {preset === 'month' && <MonthCalendar currentDate={currentDate} />}
+      {preset === 'month' && (
+        <MonthCalendar currentDate={currentDate} hiddenStudents={['Inna']} />
+      )}
     </Box>
   );
 };

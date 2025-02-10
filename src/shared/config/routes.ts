@@ -5,4 +5,6 @@ export const Routes = {
   students: '/students',
   management: '/management',
   salary: '/salary',
+  login: '/login',
+  planner: '/planner',
 };
