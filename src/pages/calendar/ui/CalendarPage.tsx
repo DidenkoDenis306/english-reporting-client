@@ -17,6 +17,7 @@ import dayjs from 'dayjs';
 import { ShownStudentsList } from 'entities/student/ui';
 import { DayCalendar, MonthCalendar, WeekCalendar } from 'features/calendar/ui';
 import { useState } from 'react';
+import { useCalendar, useCalendarLessons } from 'features/calendar/model';
 
 export type CalendarPreset = 'month' | 'week' | 'day';
 
@@ -24,7 +25,18 @@ export const CalendarPage = () => {
   const [preset, setPreset] = useState<CalendarPreset>('month');
   const [currentDate, setCurrentDate] = useState(dayjs());
 
-  const [hiddenStudents, setHiddenStudents] = useState<string[]>([]);
+  const [hiddenStudents, setHiddenStudents] = useState<number[]>([]);
+
+  const { currentYear, currentMonth, daysInCurrentMonth } = useCalendar({
+    currentDate,
+  });
+
+  const { refetchCalendarData } = useCalendarLessons(
+    currentYear,
+    currentMonth,
+    daysInCurrentMonth,
+    hiddenStudents,
+  );
 
   const handlePresetChange = (value: string | null) => {
     if (value === 'month' || value === 'week' || value === 'day') {
@@ -59,6 +71,11 @@ export const CalendarPage = () => {
     });
   };
 
+  const onHiddenStudentsChange = (newHiddenStudents: number[]) => {
+    setHiddenStudents(newHiddenStudents);
+    refetchCalendarData();
+  };
+
   return (
     <Box style={{ overflowX: 'hidden' }}>
       <Flex
@@ -75,8 +92,18 @@ export const CalendarPage = () => {
               <Button variant="light">Shown Students</Button>
             </Menu.Target>
 
-            <Menu.Dropdown>
-              <ShownStudentsList />
+            <Menu.Dropdown
+              style={{
+                backgroundColor: '#f0f0f0',
+                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
+                borderRadius: '8px',
+                padding: '8px',
+              }}
+            >
+              <ShownStudentsList
+                hiddenStudents={hiddenStudents}
+                onHiddenStudentsChange={onHiddenStudentsChange}
+              />
             </Menu.Dropdown>
           </Menu>
 
@@ -129,7 +156,10 @@ export const CalendarPage = () => {
       {preset === 'week' && <WeekCalendar currentDate={currentDate} />}
 
       {preset === 'month' && (
-        <MonthCalendar currentDate={currentDate} hiddenStudents={['Inna']} />
+        <MonthCalendar
+          currentDate={currentDate}
+          hiddenStudents={hiddenStudents}
+        />
       )}
     </Box>
   );

@@ -1,4 +1,7 @@
 export { useCalendar } from './useCalendar';
-export { useCa } from './useCalendarLessons';
+export {
+  useCalendarLessons,
+  filterCalendarLessonsData,
+} from './useCalendarLessons';
 
 export type { CalendarLessonsData } from './types';

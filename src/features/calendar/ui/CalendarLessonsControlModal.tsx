@@ -1,5 +1,8 @@
 import {
+  Badge,
+  Box,
   Button,
+  Flex,
   Group,
   Menu,
   NumberInput,
@@ -54,8 +57,6 @@ export const CalendarLessonsControlMenu: FC<Props> = ({
     }));
   };
 
-  // console.log(form.values);
-
   return (
     <Menu position="right-end" withArrow arrowPosition="center">
       <Menu.Target>
@@ -67,7 +68,7 @@ export const CalendarLessonsControlMenu: FC<Props> = ({
             top: 5,
             right: 5,
             color: isDisabled ? 'lightgray' : undefined,
-            transition: 'all 0.3s ease', // Добавьте плавный переход
+            transition: 'all 0.3s ease',
           }}
           variant={buttonVariant}
         >
@@ -80,7 +81,14 @@ export const CalendarLessonsControlMenu: FC<Props> = ({
       </Menu.Target>
 
       {!isDisabled && (
-        <Menu.Dropdown>
+        <Menu.Dropdown
+          style={{
+            backgroundColor: '#f0f0f0',
+            boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
+            borderRadius: '8px',
+            padding: '8px',
+          }}
+        >
           <Stack gap="lg" p={5}>
             <TextInput
               placeholder="Search students"
@@ -100,7 +108,20 @@ export const CalendarLessonsControlMenu: FC<Props> = ({
                       style={{ fontSize: 13 }}
                       justify="space-between"
                     >
-                      <span>{`${student.firstName} ${student.lastName}`}</span>
+                      <Flex>
+                        <Box
+                          style={{
+                            width: 5,
+                            marginRight: 10,
+                            height: '20px',
+                            borderRadius: '8px',
+                            backgroundColor: `${hashStringToColor(
+                              `${student.firstName} ${student.lastName}`,
+                            )}`,
+                          }}
+                        ></Box>
+                        <span>{`${student.firstName} ${student.lastName}`}</span>
+                      </Flex>
 
                       <NumberInput
                         w={50}
@@ -110,7 +131,7 @@ export const CalendarLessonsControlMenu: FC<Props> = ({
                         defaultValue={0}
                         value={form.values[key] as any}
                         onChange={(value) => {
-                          form.setFieldValue(key, Number(value));
+                          // form.setFieldValue(key, Number(value));
                           handleNumberInputChange(key, Number(value));
                         }}
                       />

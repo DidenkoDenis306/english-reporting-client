@@ -6,32 +6,44 @@ export const useCalendarLessons = (
   currentYear: number,
   currentMonth: number,
   lastDay: number,
+  hiddenStudents: number[] = [],
 ) => {
-  const { data: calendarData } = useQuery({
-    queryKey: ['monthCalendarData', currentYear, currentMonth + 1],
+  const { data: calendarData, refetch: refetchCalendarData } = useQuery({
+    queryKey: [
+      'monthCalendarData',
+      currentYear,
+      currentMonth + 1,
+      hiddenStudents,
+    ],
     queryFn: () =>
       calendarService.getCalendarLessons(
         `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-01`,
         `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${lastDay}`,
+        hiddenStudents,
       ),
     refetchOnWindowFocus: false,
   });
 
-  return calendarData;
+  return { calendarData, refetchCalendarData };
 };
 
-export const filterLessonsData = (
-  calendarData: CalendarLessonsData,
-  hiddenStudents: string[],
+export const filterCalendarLessonsData = (
+  lessonsData: CalendarLessonsData,
+  hiddenStudents: number[],
 ): CalendarLessonsData => {
-  return Object.fromEntries(
-    Object.entries(calendarData).map(([date, students]) => [
-      date,
-      Object.fromEntries(
-        Object.entries(students).filter(
-          ([studentName]) => !hiddenStudents.includes(studentName),
-        ),
-      ),
-    ]),
-  );
+  const filteredData: CalendarLessonsData = {};
+
+  Object.keys(lessonsData).forEach((date) => {
+    filteredData[date] = Object.keys(lessonsData[date])
+      .filter((studentId) => !hiddenStudents.includes(Number(studentId))) // Преобразуем ключ строки в число
+      .reduce(
+        (acc, studentId) => {
+          acc[studentId] = lessonsData[date][studentId];
+          return acc;
+        },
+        {} as Record<string, number>,
+      );
+  });
+
+  return filteredData;
 };

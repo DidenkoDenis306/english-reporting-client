@@ -72,11 +72,10 @@ export const CreateStudentForm = () => {
 
   return (
     <Stack
-      p={20}
+      p={10}
       w="100%"
       style={{
-        border: '2px solid #228be6',
-        margin: `${isMobile ? 0 : '40px'} auto`,
+        margin: '0 auto',
         borderRadius: '10px',
       }}
     >
