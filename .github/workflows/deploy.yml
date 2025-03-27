@@ -1,0 +1,50 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Add SSH key
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy to VPS
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} /bin/bash << 'EOF'
+          set -e
+          export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+          REPO_DIR="/var/projects/english-reporting-client"
+
+          mkdir -p "$REPO_DIR"
+          cd "$REPO_DIR"
+
+          if [ ! -d .git ]; then
+            git clone --branch main --single-branch https://github.com/DidenkoDenis306/english-reporting-client.git .
+          else
+            git fetch origin main
+            git reset --hard origin/main
+            git clean -fd 
+          fi
+
+          cat > .env <<EOL
+          NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}
+          NEXT_PUBLIC_OPEN_AI_API_KEY=${{ secrets.NEXT_PUBLIC_OPEN_AI_API_KEY }}
+          EOL
+          
+          
+          yarn install 
+          yarn build
+          yarn start
+          EOF
+          
+          
