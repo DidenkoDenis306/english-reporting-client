@@ -1,6 +1,6 @@
 import { DatePeriodFilter } from 'features/date-period-filter/ui';
 import { Button, Flex, Stack } from '@mantine/core';
-import { useViewLessonsPage } from 'pages/view-lessons/model';
+import { useViewLessonsPage } from 'views/view-lessons/model';
 import { QueryObserverResult, RefetchOptions } from '@tanstack/react-query';
 import { IStudentResponse } from 'entities/student/api';
 import { FC } from 'react';

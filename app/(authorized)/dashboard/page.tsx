@@ -1,6 +1,6 @@
 'use client';
 
-import { DashboardPage } from 'pages/dashboard/ui';
+import DashboardPage from 'views/dashboard';
 
 export default function Page() {
   return <DashboardPage />;

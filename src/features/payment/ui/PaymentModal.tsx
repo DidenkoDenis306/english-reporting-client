@@ -1,7 +1,7 @@
 import { Modal } from '@mantine/core';
 import { useQuery } from '@tanstack/react-query';
 import { studentsService } from 'entities/student/api';
-import { PaymentTab } from 'pages/management/ui/ManagmentModal/Tabs/PaymentTab';
+import { PaymentTab } from 'views/management/ui/ManagmentModal/Tabs/PaymentTab';
 import { FC } from 'react';
 
 interface Props {

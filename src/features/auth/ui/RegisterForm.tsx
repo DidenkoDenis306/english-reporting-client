@@ -9,7 +9,7 @@ import {
   TextInput,
 } from '@mantine/core';
 import { useEffect, useState } from 'react';
-import { authBackgroundImages } from 'pages/login/ui/authBackgroundImages';
+import { authBackgroundImages } from 'views/login/ui/authBackgroundImages';
 
 export function RegisterForm() {
   const [currentImage, setCurrentImage] = useState(0);

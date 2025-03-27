@@ -1,4 +1,4 @@
-import { ManagementPage } from 'pages/management/ui';
+import ManagementPage from 'views/management';
 
 export default function Page() {
   return <ManagementPage />;

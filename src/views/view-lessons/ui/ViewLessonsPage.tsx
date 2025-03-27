@@ -3,9 +3,9 @@ import { useCallback, useRef, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { studentsService } from 'entities/student/api';
 import { Button, Flex, Loader, Stack } from '@mantine/core';
-import { LessonsAccordion } from 'pages/view-lessons/ui/components/LessonsAccordion';
+import { LessonsAccordion } from 'views/view-lessons/ui/components/LessonsAccordion';
 import { StudentFullName } from 'entities/student/ui';
-import { ViewLessonsActions } from 'pages/view-lessons/ui/components/ViewLessonsActions';
+import { ViewLessonsActions } from 'views/view-lessons/ui/components/ViewLessonsActions';
 
 type TipTapEditorRef = {
   clickButton: () => void;

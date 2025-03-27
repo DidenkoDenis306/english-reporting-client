@@ -3,7 +3,7 @@
 import { Paper, Text } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import classes from './LoginPage.module.css';
-import { authBackgroundImages } from 'pages/login/ui/authBackgroundImages';
+import { authBackgroundImages } from 'views/login/ui/authBackgroundImages';
 import { LoginForm } from 'features/auth/ui/LoginForm';
 
 export const LoginPage = () => {

@@ -1,6 +1,6 @@
 'use client';
 
-import { ViewLessonsPage } from 'pages/view-lessons/ui';
+import ViewLessonsPage from 'views/view-lessons';
 
 export default function Page() {
   return <ViewLessonsPage />;

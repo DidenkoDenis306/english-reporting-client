@@ -3,8 +3,8 @@ import { FC, ReactElement, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { studentsService } from 'entities/student/api';
-import { GeneralInfoTab } from 'pages/management/ui/ManagmentModal/Tabs/GeneralInfoTab';
-import { PaymentTab } from 'pages/management/ui/ManagmentModal/Tabs/PaymentTab';
+import { GeneralInfoTab } from 'views/management/ui/ManagmentModal/Tabs/GeneralInfoTab';
+import { PaymentTab } from 'views/management/ui/ManagmentModal/Tabs/PaymentTab';
 import { Routes } from 'shared/config';
 
 interface Props {

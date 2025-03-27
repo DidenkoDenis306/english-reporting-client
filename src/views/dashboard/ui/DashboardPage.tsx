@@ -2,7 +2,7 @@ import { Group, Stack } from '@mantine/core';
 import { StatisticsCard } from './components/StatisticsCard';
 import { CalendarSection } from './components/CalendarSection';
 import { StudentsToday } from './components/StudentsToday';
-import { Greeting } from 'pages/dashboard/ui/components/Greeting';
+import { Greeting } from 'views/dashboard/ui/components/Greeting';
 import { useMobile } from 'shared/hooks';
 import { useQuery } from '@tanstack/react-query';
 import { lessonsService } from 'entities/lesson/api/lessonsService';
