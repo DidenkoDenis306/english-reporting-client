@@ -1,3 +1,3 @@
 export { calendarService } from './calendarService';
 
-export { ICalendarResponse } from './types';
+export type { ICalendarResponse } from './types';

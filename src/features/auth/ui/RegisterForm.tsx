@@ -9,7 +9,6 @@ import {
   TextInput,
 } from '@mantine/core';
 import { useEffect, useState } from 'react';
-import classes from './RegisterForm.module.css';
 import { authBackgroundImages } from 'pages/login/ui/authBackgroundImages';
 
 export function RegisterForm() {
@@ -27,10 +26,9 @@ export function RegisterForm() {
 
   return (
     <div
-      className={classes.wrapper}
       style={{ backgroundImage: `url(${authBackgroundImages[currentImage]})` }}
     >
-      <Paper className={classes.form} radius={0} p={30}>
+      <Paper radius={0} p={30}>
         <Text
           ta="center"
           mt="md"
