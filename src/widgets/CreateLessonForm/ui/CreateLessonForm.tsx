@@ -11,7 +11,6 @@ import { useEditorStore } from 'features/editor/model';
 import { lessonsService } from 'entities/lesson/api/lessonsService';
 import { CreateLessonEditor } from 'features/editor/ui';
 import { IStudent } from 'entities/student/model';
-import dayjs from 'dayjs';
 
 const MAX_WIDTH = 768;
 

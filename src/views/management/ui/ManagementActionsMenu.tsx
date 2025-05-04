@@ -9,6 +9,7 @@ import { IStudent } from 'entities/student/model';
 import { useRouter } from 'next/navigation';
 import { FC } from 'react';
 import { Routes } from 'shared/config';
+import { DeleteStudentButton } from 'entities/student/ui';
 
 interface Props {
   student: IStudent;
@@ -50,7 +51,7 @@ export const ManagementActionsMenu: FC<Props> = ({
 
         <Menu.Label>Danger zone</Menu.Label>
         <Menu.Item color="red" leftSection={<IconTrash size={14} />}>
-          Delete student
+          <DeleteStudentButton student={student} />
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>

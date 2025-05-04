@@ -1,11 +1,19 @@
 import { DatePeriodFilter } from 'features/date-period-filter/ui';
-import { Button, Flex, Stack } from '@mantine/core';
-import { useViewLessonsPage } from 'views/view-lessons/model';
-import { QueryObserverResult, RefetchOptions } from '@tanstack/react-query';
-import { IStudentResponse } from 'entities/student/api';
+import { Button, Flex, Stack, Text } from '@mantine/core';
+import {
+  QueryObserverResult,
+  RefetchOptions,
+  useMutation,
+} from '@tanstack/react-query';
+import { IStudentResponse, studentsService } from 'entities/student/api';
 import { FC } from 'react';
+import { modals } from '@mantine/modals';
+import { IStudent } from 'entities/student/model';
+import { notifications } from '@mantine/notifications';
+import { DeleteStudentButton } from 'entities/student/ui';
 
 interface Props {
+  student: IStudent;
   filter: string | null;
   setFilter: (filter: string | null) => void;
   onExportAllLessons: () => void;
@@ -15,6 +23,7 @@ interface Props {
 }
 
 export const ViewLessonsActions: FC<Props> = ({
+  student,
   filter,
   setFilter,
   onExportAllLessons,
@@ -31,7 +40,7 @@ export const ViewLessonsActions: FC<Props> = ({
         />
 
         <Button variant="outline" color="red" h={35}>
-          Delete Student
+          <DeleteStudentButton student={student} />{' '}
         </Button>
       </Flex>
 

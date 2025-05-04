@@ -43,8 +43,6 @@ export function ViewLessonsPage() {
     );
   }
 
-  console.log(student?.lessons);
-
   return (
     <>
       {student && (
@@ -56,6 +54,7 @@ export function ViewLessonsPage() {
             />
 
             <ViewLessonsActions
+              student={student}
               filter={filter}
               setFilter={setFilter}
               onExportAllLessons={handleClickAll}

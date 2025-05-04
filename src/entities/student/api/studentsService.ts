@@ -19,6 +19,12 @@ class StudentsService {
       >(`/students/${id}?filter=${filter || ''}`)
       .then((result) => result.data);
   }
+
+  public async deleteStudent(id: number): Promise<IStudentResponse> {
+    return await http
+      .delete<AxiosResponse<IStudentResponse>>(`/students/${id}`)
+      .then((result) => result.data);
+  }
 }
 
 export const studentsService = new StudentsService();

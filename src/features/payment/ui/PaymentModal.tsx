@@ -19,7 +19,7 @@ export const PaymentModal: FC<Props> = ({ studentId, isOpen, onClose }) => {
 
   return (
     <Modal size="xl" opened={isOpen} onClose={onClose} title="Student Payments">
-      {student && <PaymentTab lessons={student.lessons.slice(-5).reverse()} />}
+      {student && <PaymentTab lessons={student.lessons?.slice(-5).reverse()} />}
     </Modal>
   );
 };
